@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: e84a050b4153d7847919c14a9e16ffb0
+guid: bac147b2fc1302f4487ebe231536ab5f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8849729953413116537
-    second: "Cre\u0301ditos_0"
+      213: 1450960814791432203
+    second: Jugar_0
   - first:
-      213: -2418668060535036597
-    second: "Cre\u0301ditos_1"
+      213: 2471440304746605491
+    second: Jugar_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Cre\u0301ditos_0"
+      name: Jugar_0
       rect:
         serializedVersion: 2
-        x: 245
-        y: 341
-        width: 1082
-        height: 248
+        x: 399
+        y: 832
+        width: 708
+        height: 233
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 972b257318e80da70800000000000000
-      internalID: 8849729953413116537
+      spriteID: b0897ac6c29d22410800000000000000
+      internalID: 1450960814791432203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Cre\u0301ditos_1"
+      name: Jugar_1
       rect:
         serializedVersion: 2
-        x: 1138
-        y: 586
-        width: 21
-        height: 6
+        x: 1107
+        y: 942
+        width: 19
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b45e93ea63a2f6ed0800000000000000
-      internalID: -2418668060535036597
+      spriteID: 3bb2108ecd15c4220800000000000000
+      internalID: 2471440304746605491
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Cre\u0301ditos_0": 8849729953413116537
-      "Cre\u0301ditos_1": -2418668060535036597
+      Jugar_0: 1450960814791432203
+      Jugar_1: 2471440304746605491
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
