@@ -1,0 +1,75 @@
+# Unity .gitignore
+# Recommended for Unity projects. Place this file at the root of the repository.
+# Keeps source (Assets/, ProjectSettings/, Packages/) tracked and ignores local/derived files.
+
+### OS generated files ###
+.DS_Store
+Thumbs.db
+
+### Unity generated folders ###
+/Library/
+/Temp/
+/Obj/
+/Build/
+/Builds/
+/Logs/
+/MemoryCaptures/
+/sysinfo.txt
+
+### Visual Studio / Rider / VSCode ###
+/.vs/
+.vscode/
+.idea/
+
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+
+### User-specific files ###
+*.swp
+*.bak
+*.backup
+LocalSettings/
+
+### Build results ###
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.xcodeproj
+
+### Native / plugin binaries (often rebuilt) ###
+*.so
+*.dll
+*.dylib
+*.lib
+
+### Logs and crash reports ###
+crash.log
+crashes/
+
+### Package manager / lock files (optional) ###
+# You may want to keep lock files in source control depending on your workflow.
+# Uncomment to ignore npm/yarn lock files if you prefer not to commit them.
+# package-lock.json
+# yarn.lock
+
+### Keep these - important project files that must be committed ###
+!/[Aa]ssets/**
+!/[Pp]roject[Ss]ettings/**
+!/[Pp]ackages/**
+!/*.meta
+
+# Ignore JetBrains Rider workspace files
+.idea/
+
+# End of .gitignore
