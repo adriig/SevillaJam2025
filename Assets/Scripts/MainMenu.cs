@@ -18,4 +18,9 @@ public class MainMenu : MonoBehaviour
         if (OptionsManager.Instance != null)
             OptionsManager.Instance.OpenOptions();
     }
+
+    public void OpenCredits()
+    {
+        Application.OpenURL("https://juanclassy.itch.io/no-humans-allowed");
+    }
 }
