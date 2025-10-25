@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {
@@ -15,6 +16,14 @@ namespace Core
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+        public void Start()
+        {
+            LoadGameScene();
+        }
+        private void LoadGameScene()
+        {
+            SceneManager.LoadScene("Game");
         }
     }
 }

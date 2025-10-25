@@ -7,14 +7,33 @@
 Thumbs.db
 
 ### Unity generated folders ###
-/Library/
-/Temp/
-/Obj/
-/Build/
-/Builds/
-/Logs/
-/MemoryCaptures/
+# Unity generated directories
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
 /sysinfo.txt
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3D generated file on crash reports
+sysinfo.txt
+
+# Recordings
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
 
 ### Visual Studio / Rider / VSCode ###
 /.vs/
@@ -39,6 +58,7 @@ Thumbs.db
 *.bak
 *.backup
 LocalSettings/
+UserSettings/
 
 ### Build results ###
 *.apk
@@ -63,11 +83,19 @@ crashes/
 # package-lock.json
 # yarn.lock
 
-### Keep these - important project files that must be committed ###
+# IMPORTANTE: Archivos que SÍ deben estar en Git
+# Los archivos .asset en Assets/ y ProjectSettings/ SÍ deben estar en control de versiones
 !/[Aa]ssets/**
 !/[Pp]roject[Ss]ettings/**
 !/[Pp]ackages/**
-!/*.meta
+!**/*.meta
+
+# Pero ignoramos archivos generados automáticamente
+/[Aa]ssets/Plugins/Editor/JetBrains*
+/[Aa]ssets/[Ss]treamingAssets/**/*.bank
+/[Aa]ssets/[Ss]treamingAssets/**/*.bank.meta
+/[Aa]ssets/[Tt]extMesh[Pp]ro/[Pp]lugins/[Ee]ditor/
+*.DotSettings
 
 # Ignore JetBrains Rider workspace files
 .idea/
