@@ -94,7 +94,9 @@ crashes/
 /[Aa]ssets/Plugins/Editor/JetBrains*
 /[Aa]ssets/[Ss]treamingAssets/**/*.bank
 /[Aa]ssets/[Ss]treamingAssets/**/*.bank.meta
-/[Aa]ssets/[Tt]extMesh[Pp]ro/[Pp]lugins/[Ee]ditor/
+# Ignore all TextMesh Pro files
+[Aa]ssets/TextMesh\ Pro/
+[Aa]ssets/TextMesh\ Pro.meta
 *.DotSettings
 
 # Ignore JetBrains Rider workspace files

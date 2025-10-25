@@ -23,7 +23,8 @@ namespace Core
         }
         private void LoadGameScene()
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("MainMenu");
         }
+
     }
 }
