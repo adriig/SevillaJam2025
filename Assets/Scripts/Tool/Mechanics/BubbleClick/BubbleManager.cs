@@ -7,11 +7,6 @@ public class BubbleManager : MonoBehaviour, ToolMechanic
     public GameObject bubblePrefab;
     private List<GameObject> activeBubbles = new List<GameObject>();
 
-    public void Start()
-    {
-        Debug.Log("hey");
-    }
-
     public void GenerateBubble(Vector2 position)
     {
         GameObject newBubble = Instantiate(bubblePrefab, position, Quaternion.identity);

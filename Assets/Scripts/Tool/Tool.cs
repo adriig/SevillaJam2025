@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tool", menuName = "Game/Tool")]
@@ -5,12 +6,12 @@ public abstract class Tool : ScriptableObject
 {
     [SerializeField] public Sprite icon;
     [SerializeField] public bool cursorReplace;
+    [SerializeField] public int position = 0;
 
     public void SetToolCursor()
     {
         if (cursorReplace)
         {
-            Debug.Log("Setting cursor");
             Cursor.SetCursor(icon.texture, Vector2.zero, CursorMode.Auto);
         }
     }
@@ -23,13 +24,22 @@ public abstract class Tool : ScriptableObject
         }
     }
 
-    public void InitializeTool()
+    public virtual void setAllToFalse(Dictionary<Characters, GameObject> dictionary)
     {
-        Debug.Log("Initializing tool");
+        foreach (var kvp in dictionary)
+        {
+            kvp.Value.SetActive(false);
+        }
     }
 
-    public void UseTool()
+    public virtual void DisableAll()
     {
-        Debug.Log("Using tool");
+    }
+    public virtual void InitializeTool()
+    {
+    }
+
+    public virtual void UseTool(Characters character)
+    {
     }
 }

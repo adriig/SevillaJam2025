@@ -6,12 +6,10 @@ public class SortedBubbleClickTool : Tool
     public new void InitializeTool()
     {
         base.InitializeTool();
-        Debug.Log("Initializing SortedBubbleClickTool");
     }
 
-    public new void UseTool()
+    public new void UseTool(Characters character)
     {
-        base.UseTool();
-        Debug.Log("Using SortedBubbleClickTool");
+        base.UseTool(character);
     }
 }

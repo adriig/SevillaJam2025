@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acd98714406d6746a02f1b794c1bf04, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  Sprites:
+  - {fileID: 11400000, guid: 9824793ba4d0d16428a6bf180c19ab3d, type: 2}
+  - {fileID: 11400000, guid: 61eff0f183222cf4486a821a0836da2f, type: 2}
+  - {fileID: 11400000, guid: 61eff0f183222cf4486a821a0836da2f, type: 2}
+  - {fileID: 11400000, guid: 704d41cd34aa0df4b9ae38bac074faf3, type: 2}
+  - {fileID: 11400000, guid: 8d1b1e7f9be069d4183bbb89cd7a5e8f, type: 2}
+  - {fileID: 11400000, guid: 1c08ea3640ebcab47835650fb177f358, type: 2}
+  - {fileID: 11400000, guid: 6005c025174a9a94fb87e69bfdd08d8a, type: 2}
+  - {fileID: 11400000, guid: 418175701bfea0348af5e30063871493, type: 2}
+  - {fileID: 11400000, guid: 8b7e5d81edd4ae2438065e5c242b18da, type: 2}
+  - {fileID: 11400000, guid: baf6b39f948edda4cb12a6088cb84272, type: 2}
+  - {fileID: 11400000, guid: baf6b39f948edda4cb12a6088cb84272, type: 2}
+  - {fileID: 11400000, guid: 442302951eb37f44c993c0d567758796, type: 2}
+  - {fileID: 11400000, guid: b46816dde0cb1414197996bcb02c8743, type: 2}
+  Tools:
+  - {fileID: 11400000, guid: 69926ebbb48704847b412728e94804ba, type: 2}
+  - {fileID: 11400000, guid: 5810dc1a5811f5e44913c232a57c477c, type: 2}
+  - {fileID: 11400000, guid: 13032613e0653444b90d6b4a3b473882, type: 2}
+  - {fileID: 11400000, guid: c79cf38d8e914504ab47ecf837f59010, type: 2}
+  - {fileID: 11400000, guid: 04753e7ad59b38a4d89f4308618f19f2, type: 2}
+  activeTool: {fileID: 11400000, guid: 69926ebbb48704847b412728e94804ba, type: 2}
+  activeCharacterSprite: {fileID: 11400000, guid: 61eff0f183222cf4486a821a0836da2f, type: 2}
+  activeOverflowCharacterSprite: {fileID: 11400000, guid: 9824793ba4d0d16428a6bf180c19ab3d, type: 2}
+  character: 0

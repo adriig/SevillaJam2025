@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,16 +53,67 @@ public class GameManager : MonoBehaviour
         HandleActiveCharacter();
     }
 
+    public void Next()
+    {
+        NextTool();
+        NextSprite();
+    }
+
+    private void NextTool()
+    {
+        activeTool.DisableAll();
+        SetActiveTool(activeCharacter.NextTool());
+    }
+
+    private Coroutine spriteChangeCoroutine;
+    private bool isChangingSprites = false;
+
+    public void NoMoreTools()
+    {
+        if (!isChangingSprites)
+        {
+            isChangingSprites = true;
+            spriteChangeCoroutine = StartCoroutine(AutomaticSpriteChange());
+        }
+    }
+
+    public void StopSpriteChange()
+    {
+        if (isChangingSprites && spriteChangeCoroutine != null)
+        {
+            StopCoroutine(spriteChangeCoroutine);
+            isChangingSprites = false;
+        }
+    }
+
+    private IEnumerator AutomaticSpriteChange()
+    {
+        while (isChangingSprites)
+        {
+            yield return new WaitForSeconds(2f); // Espera 2 segundos
+            NextSprite();
+        }
+    }
+
+    private void NextSprite()
+    {
+        activeCharacter.NextCharacterSprite();
+        Debug.Log(activeCharacter.activeOverflowCharacterSprite);
+        UpdateUI();
+    }
+
     public void HandleActiveCharacter()
     {
-        if (activeCharacter != null)
-        {
-            Debug.Log($"Handling character: {activeCharacter.name}");
-        }
         activeCharacter.InitializeCharacter();
-        SetActiveTool(activeCharacter.GetActiveTool());
+        SetActiveTool(activeCharacter.activeTool);
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
         UIGameManager.Instance.UpdateCharacterImage(activeCharacter.activeCharacterSprite.sprite);
         UIGameManager.Instance.UpdateOverflowCharacterImage(activeCharacter.activeOverflowCharacterSprite?.sprite);
         UIGameManager.Instance.RenderTools(activeCharacter.Tools);
+
     }
 }

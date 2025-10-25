@@ -10,6 +10,15 @@ public class UIGameManager : MonoBehaviour
     [SerializeField] private Image overflowCharacterRenderer;
     [SerializeField] private HorizontalLayoutGroup toolsRenderer;
 
+    [Header("Character GameObjects")]
+    [SerializeField] public GameObject skeletonHoldOnZone;
+    [SerializeField] public GameObject skeletonBoneContainer;
+    [SerializeField] public GameObject skeletonDraggableBone;
+    [SerializeField] public GameObject skeletonBoneDropArea;
+    [SerializeField] public GameObject skeletonHoldOnBone1;
+    [SerializeField] public GameObject skeletonHoldOnBone2;
+    [SerializeField] public GameObject skeletonHoldOnBone3;
+
     [HideInInspector]
     public static UIGameManager Instance { get; private set; }
 
@@ -45,6 +54,29 @@ public class UIGameManager : MonoBehaviour
             {
                 overflowCharacterRenderer.gameObject.SetActive(true);
                 overflowCharacterRenderer.sprite = overflowSprite;
+                SetOverflowCharacterOpacity(0f);
+            }
+        }
+    }
+
+    public void SetOverflowCharacterOpacity(float opacityPercentage)
+    {
+        if (overflowCharacterRenderer != null)
+        {
+            float invertedPercentage = 100f - Mathf.Clamp(opacityPercentage, 0f, 100f);
+            float alpha = invertedPercentage / 100f;
+
+            Color color = overflowCharacterRenderer.color;
+            color.a = alpha;
+            overflowCharacterRenderer.color = color;
+
+            if (alpha == 0f)
+            {
+                overflowCharacterRenderer.gameObject.SetActive(false);
+            }
+            else if (!overflowCharacterRenderer.gameObject.activeSelf)
+            {
+                overflowCharacterRenderer.gameObject.SetActive(true);
             }
         }
     }
