@@ -12,6 +12,9 @@ public abstract class Tool : ScriptableObject
     [SerializeField]
     public bool cursorReplace;
 
+    [SerializeField]
+    public AudioClip clipSound;
+
     public GameObject GetGameObject(Characters character, String name)
     {
         string key = character.ToString() + "_" + name;

@@ -38,7 +38,7 @@ MonoBehaviour:
   activeTool:
     tool: {fileID: 11400000, guid: f1519d76ed89f2148bb7dc3821858439, type: 2}
     key: 2
-  activeCharacterSprite: {fileID: 11400000, guid: b6384525efecbf54db6f7f1367f334c4, type: 2}
+  activeCharacterSprite: {fileID: 11400000, guid: 3f8796efb322bb94bb8d5e85745b046c, type: 2}
   activeOverflowCharacterSprite: {fileID: 0}
   character: 1
   musicTheme: {fileID: 8300000, guid: 674e5df1b1b44ab4db331ea986cbfb46, type: 3}

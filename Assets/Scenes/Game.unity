@@ -650,10 +650,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   characters:
+  - {fileID: 11400000, guid: dd67375e3aed37c45a04ec0c940f0f2d, type: 2}
   - {fileID: 11400000, guid: 90d2a50ad7465da40ae990ddb124d9e3, type: 2}
   - {fileID: 11400000, guid: c4e42430a9ac4244c93f08d425264966, type: 2}
   - {fileID: 11400000, guid: 9d38174df6ad7b94c97e413a44b5fe24, type: 2}
-  - {fileID: 11400000, guid: dd67375e3aed37c45a04ec0c940f0f2d, type: 2}
   activeCharacter: {fileID: 0}
   activeTool: {fileID: 0}
   characterTimeSeconds: 60
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 712035800519618848, guid: 411370c446d5081499fb24dc386cf893, type: 3}
+  m_Sprite: {fileID: 712035800519618848, guid: df0478603b6387d44a80ecf424a8c1ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
