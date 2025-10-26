@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2ac7378daadb441bcc164152f810d8, type: 3}
+  m_Name: Abrillantador
+  m_EditorClassIdentifier: Assembly-CSharp::HoldOnZoneTool
+  icon: {fileID: -8471648800693299346, guid: e36b7d169e85f55478d242a9afc0b48c, type: 3}
+  cursorReplace: 1

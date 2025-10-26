@@ -4,8 +4,11 @@ using UnityEngine.EventSystems;
 public class BubbleHandler : MonoBehaviour, IPointerClickHandler
 {
     [Header("Bubble Settings")]
-    [SerializeField] private float shrinkAmount = 0.2f;
-    [SerializeField] private float minSize = 0.5f;
+    [SerializeField]
+    private float shrinkAmount = 0.2f;
+
+    [SerializeField]
+    private float minSize = 0.5f;
 
     private Vector3 originalScale;
     private int clickCount = 0;

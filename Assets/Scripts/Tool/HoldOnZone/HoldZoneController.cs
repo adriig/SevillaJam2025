@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HoldZoneController : MonoBehaviour,
-    IPointerEnterHandler, IPointerExitHandler,
-    IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler
+public class HoldZoneController
+    : MonoBehaviour,
+        IPointerEnterHandler,
+        IPointerExitHandler,
+        IPointerDownHandler,
+        IPointerUpHandler,
+        IPointerMoveHandler
 {
-    [SerializeField] private float requiredHoldDistance = 2500f;
+    [SerializeField]
+    private float requiredHoldDistance = 2500f;
     private bool isPointerInside = false;
     private bool isClickHeld = false;
     private bool isCompleted = false;
@@ -74,4 +79,10 @@ public class HoldZoneController : MonoBehaviour,
         GameManager.Instance.Next();
     }
 
+    public void Reset()
+    {
+        isCompleted = false;
+        isClickHeld = false;
+        accumulatedDistance = 1f;
+    }
 }

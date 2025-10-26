@@ -1,89 +1,39 @@
+using System;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New DragAndLeaveTool", menuName = "Game/Tool/DragAndLeaveTool")]
-
-
 public class DragAndLeaveTool : Tool
 {
-    private Dictionary<(Characters character, int position), GameObject> draggableElements;
-    private Dictionary<(Characters character, int position), GameObject> dropAreas;
-    private Dictionary<(Characters character, int position), GameObject> containers;
+    private GameObject draggableElement;
+    private GameObject dropArea;
+    private GameObject container;
 
-    public override void InitializeTool()
+    public override void InitializeTool(Characters character, string key)
     {
-        base.InitializeTool();
-        initializeDraggableElementsDictionary();
-        initializeDropAreasDictionary();
-        initializeContainersDictionary();
-    }
-
-    private void initializeDraggableElementsDictionary()
-    {
-        draggableElements = new Dictionary<(Characters character, int position), GameObject>();
-
-        var uiManager = UIGameManager.Instance;
-        draggableElements.Add((Characters.Skeleton, 0), uiManager.skeletonDraggableBone);
-        // Puedes añadir más elementos así:
-        // draggableElements.Add((Characters.Skeleton, 1), uiManager.otroElemento);
-    }
-
-    public void initializeDropAreasDictionary()
-    {
-        dropAreas = new Dictionary<(Characters character, int position), GameObject>();
-
-        var uiManager = UIGameManager.Instance;
-        dropAreas.Add((Characters.Skeleton, 0), uiManager.skeletonBoneDropArea);
-        // Puedes añadir más áreas así:
-        // dropAreas.Add((Characters.Skeleton, 1), uiManager.otraArea);
-    }
-
-    private void initializeContainersDictionary()
-    {
-        containers = new Dictionary<(Characters character, int position), GameObject>();
-
-        var uiManager = UIGameManager.Instance;
-        containers.Add((Characters.Skeleton, 0), uiManager.skeletonBoneContainer);
-        // Puedes añadir más contenedores así:
-        // containers.Add((Characters.Skeleton, 1), uiManager.otroContenedor);
+        base.InitializeTool(character, key);
+        draggableElement = GetGameObject(character, key + "Draggable");
+        dropArea = GetGameObject(character, key + "DropArea");
+        container = GetGameObject(character, key + "Container");
     }
 
     public override void DisableAll()
     {
         base.DisableAll();
-        
-        foreach (var gameObject in draggableElements.Values)
-        {
-            if (gameObject != null) gameObject.SetActive(false);
-        }
-        foreach (var gameObject in dropAreas.Values)
-        {
-            if (gameObject != null) gameObject.SetActive(false);
-        }
-        foreach (var gameObject in containers.Values)
-        {
-            if (gameObject != null) gameObject.SetActive(false);
-        }
+
+        draggableElement.SetActive(false);
+        dropArea.SetActive(false);
+        container.SetActive(false);
     }
 
-    public override void UseTool(Characters character)
+    public override void UseTool()
     {
+        base.UseTool();
         DisableAll();
-        base.UseTool(character);
 
-        var key = (character, position);
-        
-        if (draggableElements.TryGetValue(key, out GameObject draggableElement))
-        {
-            draggableElement.SetActive(true);
-        }
-        if (dropAreas.TryGetValue(key, out GameObject dropArea))
-        {
-            dropArea.SetActive(true);
-        }
-        if (containers.TryGetValue(key, out GameObject container))
-        {
-            container.SetActive(true);
-        }
+        draggableElement.SetActive(true);
+        dropArea.SetActive(true);
+        container.SetActive(true);
     }
 }

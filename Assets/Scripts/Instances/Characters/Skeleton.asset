@@ -23,16 +23,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 418175701bfea0348af5e30063871493, type: 2}
   - {fileID: 11400000, guid: 8b7e5d81edd4ae2438065e5c242b18da, type: 2}
   - {fileID: 11400000, guid: baf6b39f948edda4cb12a6088cb84272, type: 2}
-  - {fileID: 11400000, guid: baf6b39f948edda4cb12a6088cb84272, type: 2}
   - {fileID: 11400000, guid: 442302951eb37f44c993c0d567758796, type: 2}
   - {fileID: 11400000, guid: b46816dde0cb1414197996bcb02c8743, type: 2}
   Tools:
-  - {fileID: 11400000, guid: 69926ebbb48704847b412728e94804ba, type: 2}
-  - {fileID: 11400000, guid: 5810dc1a5811f5e44913c232a57c477c, type: 2}
-  - {fileID: 11400000, guid: 13032613e0653444b90d6b4a3b473882, type: 2}
-  - {fileID: 11400000, guid: c79cf38d8e914504ab47ecf837f59010, type: 2}
-  - {fileID: 11400000, guid: 04753e7ad59b38a4d89f4308618f19f2, type: 2}
-  activeTool: {fileID: 11400000, guid: 69926ebbb48704847b412728e94804ba, type: 2}
-  activeCharacterSprite: {fileID: 11400000, guid: 61eff0f183222cf4486a821a0836da2f, type: 2}
-  activeOverflowCharacterSprite: {fileID: 11400000, guid: 9824793ba4d0d16428a6bf180c19ab3d, type: 2}
+  - tool: {fileID: 11400000, guid: ba07b17da2660784db5950e362dcad4e, type: 2}
+    key: 
+  - tool: {fileID: 11400000, guid: 2b62fa05547b20643b250ea92dcac573, type: 2}
+    key: 
+  - tool: {fileID: 11400000, guid: 37b5b28d965fc454e93b4607184a8dbc, type: 2}
+    key: 1
+  - tool: {fileID: 11400000, guid: 37b5b28d965fc454e93b4607184a8dbc, type: 2}
+    key: 2
+  - tool: {fileID: 11400000, guid: 37b5b28d965fc454e93b4607184a8dbc, type: 2}
+    key: 3
+  - tool: {fileID: 11400000, guid: 0ccef2a8f47850147b1f9d5698974871, type: 2}
+    key: 
+  activeTool:
+    tool: {fileID: 11400000, guid: 0ccef2a8f47850147b1f9d5698974871, type: 2}
+    key: 
+  activeCharacterSprite: {fileID: 11400000, guid: baf6b39f948edda4cb12a6088cb84272, type: 2}
+  activeOverflowCharacterSprite: {fileID: 11400000, guid: baf6b39f948edda4cb12a6088cb84272, type: 2}
   character: 0

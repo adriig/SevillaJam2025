@@ -25,10 +25,7 @@ public class BubbleManager : MonoBehaviour, ToolMechanic
         activeBubbles.Clear();
     }
 
-    public void OnSpriteChange()
-    {
-        Debug.Log("Unimplemented");
-    }
+    public void OnSpriteChange() { }
 
     public void RemoveBubble(GameObject bubble)
     {

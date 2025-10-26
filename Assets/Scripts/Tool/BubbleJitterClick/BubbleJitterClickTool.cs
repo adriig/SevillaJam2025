@@ -1,19 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New BubbleJitterClickTool", menuName = "Game/Tool/BubbleJitterClickTool")]
+[CreateAssetMenu(
+    fileName = "New BubbleJitterClickTool",
+    menuName = "Game/Tool/BubbleJitterClickTool"
+)]
 public class BubbleJitterClickTool : Tool
 {
-    [SerializeField] public List<GameObject> bubblesRef;
-    public new void InitializeTool()
+    [SerializeField]
+    public List<GameObject> bubblesRef;
+
+    public new void InitializeTool(Characters character, string key)
     {
-        base.InitializeTool();
-        Debug.Log("Initializing BubbleJitterClickTool");
+        base.InitializeTool(character, key);
     }
 
-    public new void UseTool(Characters character)
+    public new void UseTool()
     {
-        base.UseTool(character);
-        Debug.Log($"Using BubbleJitterClickTool on {character}");
+        base.UseTool();
     }
 }

@@ -1,52 +1,35 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New HoldOnZoneTool", menuName = "Game/Tool/HoldOnZoneTool")]
 public class HoldOnZoneTool : Tool
 {
-    private Dictionary<(Characters character, int position), GameObject> characterGameObjects;
+    private GameObject holdOnZone;
 
-    public override void InitializeTool()
+    public override void InitializeTool(Characters character, string key)
     {
-        base.InitializeTool();
-        InitializeCharacterDictionary();
-    }
-
-    private void InitializeCharacterDictionary()
-    {
-        characterGameObjects = new Dictionary<(Characters character, int position), GameObject>();
-
-        var uiManager = UIGameManager.Instance;
-        characterGameObjects.Add((Characters.Skeleton, 0), uiManager.skeletonHoldOnZone);
-        characterGameObjects.Add((Characters.Skeleton, 1), uiManager.skeletonHoldOnBone1);
-        characterGameObjects.Add((Characters.Skeleton, 2), uiManager.skeletonHoldOnBone2);
-        characterGameObjects.Add((Characters.Skeleton, 3), uiManager.skeletonHoldOnBone3);
+        base.InitializeTool(character, key + "HoldOnZone");
+        holdOnZone = GetGameObject(character, key + "HoldOnZone");
+        if (!holdOnZone)
+        {
+            Debug.LogError("HoldOnZone GameObject not found for key: " + key);
+            return;
+        }
+        HoldZoneController holdZoneController = holdOnZone.GetComponent<HoldZoneController>();
+        holdZoneController.Reset();
     }
 
     public override void DisableAll()
     {
         base.DisableAll();
-        foreach (var gameObject in characterGameObjects.Values)
-        {
-            if (gameObject != null)
-            {
-                gameObject.SetActive(false);
-            }
-        }
+        holdOnZone.SetActive(false);
     }
 
-    public override void UseTool(Characters character)
+    public override void UseTool()
     {
-        base.UseTool(character);
+        base.UseTool();
 
-        var key = (character, position);
-        if (characterGameObjects.ContainsKey(key))
-        {
-            characterGameObjects[key].SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning($"No se encontró HoldZone para {character} en posición {position}");
-        }
+        holdOnZone.SetActive(true);
     }
 }

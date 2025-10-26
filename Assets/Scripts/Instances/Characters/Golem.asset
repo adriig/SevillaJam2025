@@ -13,10 +13,21 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: Assembly-CSharp::Character
   Sprites:
-  - {fileID: 11400000, guid: 6d29869c299ef664ab3285efacb8ed03, type: 2}
-  - {fileID: 11400000, guid: 317113e579055ee4c9d7219664dacb2a, type: 2}
+  - {fileID: 11400000, guid: 6c50c5ab022520c4ab6737e1485f01be, type: 2}
+  - {fileID: 11400000, guid: baae19a9ffa3dbb4491eb699f809fe30, type: 2}
+  - {fileID: 11400000, guid: 07de3ae0d67851746b830ca482183553, type: 2}
+  - {fileID: 11400000, guid: 01a6de49c05c22842a939542cf4f5534, type: 2}
+  - {fileID: 11400000, guid: 3f8796efb322bb94bb8d5e85745b046c, type: 2}
+  - {fileID: 11400000, guid: d9bcecbf613050843bdb276416388cf0, type: 2}
+  - {fileID: 11400000, guid: b6384525efecbf54db6f7f1367f334c4, type: 2}
   Tools:
-  - {fileID: 11400000, guid: 69926ebbb48704847b412728e94804ba, type: 2}
-  activeTool: {fileID: 11400000, guid: 69926ebbb48704847b412728e94804ba, type: 2}
-  activeCharacterSprite: {fileID: 11400000, guid: 317113e579055ee4c9d7219664dacb2a, type: 2}
-  activeOverflowCharacterSprite: {fileID: 11400000, guid: 6d29869c299ef664ab3285efacb8ed03, type: 2}
+  - tool: {fileID: 11400000, guid: ba07b17da2660784db5950e362dcad4e, type: 2}
+    key: 
+  - tool: {fileID: 11400000, guid: 2a3c902f9f4299046829939dbc99829d, type: 2}
+    key: 
+  activeTool:
+    tool: {fileID: 11400000, guid: ba07b17da2660784db5950e362dcad4e, type: 2}
+    key: 
+  activeCharacterSprite: {fileID: 11400000, guid: baae19a9ffa3dbb4491eb699f809fe30, type: 2}
+  activeOverflowCharacterSprite: {fileID: 11400000, guid: 6c50c5ab022520c4ab6737e1485f01be, type: 2}
+  character: 1

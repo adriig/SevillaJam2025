@@ -6,11 +6,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public List<Character> characters;
+
     [HideInInspector]
     public Character activeCharacter = null;
+
     [HideInInspector]
     public Tool activeTool = null;
     public static GameManager Instance { get; private set; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -77,6 +80,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NoMoreSprites()
+    {
+        NextCharacter();
+    }
+
     public void StopSpriteChange()
     {
         if (isChangingSprites && spriteChangeCoroutine != null)
@@ -90,7 +98,7 @@ public class GameManager : MonoBehaviour
     {
         while (isChangingSprites)
         {
-            yield return new WaitForSeconds(2f); // Espera 2 segundos
+            yield return new WaitForSeconds(4f);
             NextSprite();
         }
     }
@@ -98,22 +106,22 @@ public class GameManager : MonoBehaviour
     private void NextSprite()
     {
         activeCharacter.NextCharacterSprite();
-        Debug.Log(activeCharacter.activeOverflowCharacterSprite);
         UpdateUI();
     }
 
     public void HandleActiveCharacter()
     {
         activeCharacter.InitializeCharacter();
-        SetActiveTool(activeCharacter.activeTool);
+        SetActiveTool(activeCharacter.activeTool.tool);
         UpdateUI();
     }
 
     public void UpdateUI()
     {
         UIGameManager.Instance.UpdateCharacterImage(activeCharacter.activeCharacterSprite.sprite);
-        UIGameManager.Instance.UpdateOverflowCharacterImage(activeCharacter.activeOverflowCharacterSprite?.sprite);
-        UIGameManager.Instance.RenderTools(activeCharacter.Tools);
-
+        UIGameManager.Instance.UpdateOverflowCharacterImage(
+            activeCharacter.activeOverflowCharacterSprite?.sprite
+        );
+        // UIGameManager.Instance.RenderTools(activeCharacter.Tools);
     }
 }

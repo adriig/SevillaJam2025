@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ee836906bbe549b98bcb7140b5a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldZoneController
-  requiredHoldDistance: 7500
+  requiredHoldDistance: 4500
 --- !u!222 &263871319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -376,8 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   characters:
-  - {fileID: 11400000, guid: 9d38174df6ad7b94c97e413a44b5fe24, type: 2}
   - {fileID: 11400000, guid: dd67375e3aed37c45a04ec0c940f0f2d, type: 2}
+  - {fileID: 11400000, guid: 9d38174df6ad7b94c97e413a44b5fe24, type: 2}
   activeCharacter: {fileID: 0}
   activeTool: {fileID: 0}
 --- !u!4 &459466323
@@ -417,6 +417,7 @@ MonoBehaviour:
   skeletonHoldOnBone1: {fileID: 1346245585}
   skeletonHoldOnBone2: {fileID: 263871315}
   skeletonHoldOnBone3: {fileID: 2058772356}
+  golemHoldOnZone: {fileID: 1167922769}
 --- !u!1 &715132935
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +517,7 @@ RectTransform:
   - {fileID: 1231097450}
   - {fileID: 730109013}
   - {fileID: 1759109163}
+  - {fileID: 1167922770}
   - {fileID: 1346245586}
   - {fileID: 263871316}
   - {fileID: 2058772357}
@@ -547,7 +549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &730109013
 RectTransform:
   m_ObjectHideFlags: 0
@@ -630,6 +632,95 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730109012}
+  m_CullTransparentMesh: 1
+--- !u!1 &1167922769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167922770}
+  - component: {fileID: 1167922773}
+  - component: {fileID: 1167922772}
+  - component: {fileID: 1167922771}
+  m_Layer: 5
+  m_Name: GolemHeadArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1167922770
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167922769}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 715132939}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -61, y: 26}
+  m_SizeDelta: {x: -1652.3483, y: -794.53}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1167922771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167922769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1167922772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167922769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4ee836906bbe549b98bcb7140b5a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoldZoneController
+  requiredHoldDistance: 7500
+--- !u!222 &1167922773
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167922769}
   m_CullTransparentMesh: 1
 --- !u!1 &1219646122
 GameObject:
@@ -936,7 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ee836906bbe549b98bcb7140b5a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldZoneController
-  requiredHoldDistance: 7500
+  requiredHoldDistance: 4500
 --- !u!222 &1346245589
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1020,51 +1111,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514146891}
   m_CullTransparentMesh: 1
---- !u!1 &1570750097
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1570750099}
-  - component: {fileID: 1570750098}
-  m_Layer: 0
-  m_Name: MechanicsContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1570750098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570750097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d10a485c0c3bfe418bdec1aa8a9a327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BubbleManager
-  bubblePrefab: {fileID: 2470076091763825886, guid: 8dbc32ba3bc825e4e8780f63a96da660, type: 3}
---- !u!4 &1570750099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570750097}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 558.67535, y: -7.13981, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1759109162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ee836906bbe549b98bcb7140b5a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldZoneController
-  requiredHoldDistance: 7500
+  requiredHoldDistance: 4500
 --- !u!222 &2058772360
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1494,4 +1540,3 @@ SceneRoots:
   - {fileID: 459466323}
   - {fileID: 715132939}
   - {fileID: 2078995724}
-  - {fileID: 1570750099}

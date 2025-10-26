@@ -1,35 +1,43 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public enum Characters
 {
     Skeleton,
     Golem,
     Ghost,
-    PixelArt
+    PixelArt,
 }
 
 [CreateAssetMenu(fileName = "New Character", menuName = "Game/Character")]
 public class Character : ScriptableObject
 {
-    [SerializeField] public List<CharacterSprite> Sprites;
-    [SerializeField] public List<Tool> Tools;
+    [SerializeField]
+    public List<CharacterSprite> Sprites;
+
+    [SerializeField]
+    public List<CharacterTool> Tools;
+
     [HideInInspector]
-    public Tool activeTool = null;
+    public CharacterTool activeTool = null;
+
     [HideInInspector]
     public CharacterSprite activeCharacterSprite = null;
+
     [HideInInspector]
     public OverflowCharacterSprite activeOverflowCharacterSprite = null;
+
     [HideInInspector]
     private int currentSpriteIndex = 0;
+
     [SerializeField]
     public Characters character;
+
     public void InitializeCharacter()
     {
-        Debug.Log("Initializing character: " + name);
         activeTool = Tools[0];
         UseActiveTool();
-        
+
         currentSpriteIndex = 0;
         if (Sprites[0].type == CharacterSpriteType.Overflow)
         {
@@ -66,47 +74,39 @@ public class Character : ScriptableObject
         int nextIndex = (currentIndex + 1) % Tools.Count;
         activeTool = Tools[nextIndex];
         UseActiveTool();
-        return activeTool;
+        return activeTool.tool;
     }
 
     public void NextCharacterSprite()
     {
-        Debug.Log("Current active sprite: " + activeCharacterSprite.name);
-        Debug.Log("Current overflow sprite: " + activeOverflowCharacterSprite?.name);
-        Debug.Log("Total sprites in list: " + Sprites.Count);
-        
         int nextIndex = (currentSpriteIndex + 1) % Sprites.Count;
-        Debug.Log($"Initial indices - Current: {currentSpriteIndex}, Next: {nextIndex}");
-        
-        Debug.Log($"Sprite at nextIndex ({nextIndex}) is of type: {Sprites[nextIndex].type}");
-        
+
+        if (nextIndex == 0)
+        {
+            Debug.Log("ULTIMO SPRITE");
+            GameManager.Instance.NoMoreSprites();
+            return;
+        }
+
         if (Sprites[nextIndex].type == CharacterSpriteType.Overflow)
         {
-            Debug.Log("Found overflow sprite, updating indices...");
             activeOverflowCharacterSprite = Sprites[nextIndex] as OverflowCharacterSprite;
             nextIndex = (nextIndex + 1) % Sprites.Count;
-            Debug.Log($"After overflow adjustment - Next: {nextIndex}");
         }
         else
         {
-            Debug.Log("No overflow sprite found");
             activeOverflowCharacterSprite = null;
         }
         activeCharacterSprite = Sprites[nextIndex];
-        currentSpriteIndex = nextIndex; // Actualizamos el índice actual
-        Debug.Log("Updated active sprite to: " + activeCharacterSprite.name);
-        Debug.Log(nextIndex + " - " + Sprites.IndexOf(activeCharacterSprite));
-        Debug.Log(activeCharacterSprite.name);
-        Debug.Log(activeOverflowCharacterSprite?.name);
-        Debug.Log("------------------------------");
+        currentSpriteIndex = nextIndex;
     }
 
     public void UseActiveTool()
     {
         if (activeTool != null)
         {
-            activeTool.InitializeTool();
-            activeTool.UseTool(character);
+            activeTool.tool.InitializeTool(character, activeTool.key);
+            activeTool.tool.UseTool();
         }
         else
         {

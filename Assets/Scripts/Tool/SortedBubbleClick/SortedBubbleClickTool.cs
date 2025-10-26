@@ -1,15 +1,18 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New SortedBubbleClickTool", menuName = "Game/Tool/SortedBubbleClickTool")]
+[CreateAssetMenu(
+    fileName = "New SortedBubbleClickTool",
+    menuName = "Game/Tool/SortedBubbleClickTool"
+)]
 public class SortedBubbleClickTool : Tool
 {
-    public new void InitializeTool()
+    public override void InitializeTool(Characters character, string key)
     {
-        base.InitializeTool();
+        base.InitializeTool(character, key);
     }
 
-    public new void UseTool(Characters character)
+    public override void UseTool()
     {
-        base.UseTool(character);
+        base.UseTool();
     }
 }

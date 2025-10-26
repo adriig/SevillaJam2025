@@ -3,7 +3,8 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private GameObject safeArea;
+    [SerializeField]
+    private GameObject safeArea;
     private Vector3 originalPosition;
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -47,11 +48,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             if (safeAreaRect != null)
             {
                 Vector2 localPointerPosition;
-                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                    safeAreaRect,
-                    eventData.position,
-                    eventData.pressEventCamera,
-                    out localPointerPosition))
+                if (
+                    RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                        safeAreaRect,
+                        eventData.position,
+                        eventData.pressEventCamera,
+                        out localPointerPosition
+                    )
+                )
                 {
                     if (safeAreaRect.rect.Contains(localPointerPosition))
                     {
