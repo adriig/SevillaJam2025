@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public abstract class Tool : ScriptableObject
 {
     [SerializeField]
-    public Sprite icon;
+    public Texture2D icon;
 
     [SerializeField]
     public bool cursorReplace;
@@ -22,7 +22,7 @@ public abstract class Tool : ScriptableObject
     {
         if (cursorReplace)
         {
-            Cursor.SetCursor(icon.texture, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(icon, Vector2.zero, CursorMode.Auto);
         }
     }
 

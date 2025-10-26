@@ -146,18 +146,6 @@ public class UIGameManager : MonoBehaviour
         }
     }
 
-    public void RenderTools(List<Tool> tools)
-    {
-        ResetTools();
-        foreach (var tool in tools)
-        {
-            GameObject toolIcon = new GameObject(tool.name);
-            Image iconImage = toolIcon.AddComponent<Image>();
-            iconImage.sprite = tool.icon;
-            toolIcon.transform.SetParent(toolsRenderer.transform);
-        }
-    }
-
     internal GameObject getGameObject(string key)
     {
         Debug.Log(key);

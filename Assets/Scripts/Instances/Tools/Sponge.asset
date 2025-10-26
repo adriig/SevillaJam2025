@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2ac7378daadb441bcc164152f810d8, type: 3}
   m_Name: Sponge
   m_EditorClassIdentifier: Assembly-CSharp::HoldOnZoneTool
-  icon: {fileID: -2724729294906158009, guid: 388d0b9d290971245a6b99766954eb5e, type: 3}
+  icon: {fileID: 2800000, guid: 388d0b9d290971245a6b99766954eb5e, type: 3}
   cursorReplace: 1

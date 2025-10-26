@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5585b6263661bf941accbad00f25ecfa, type: 3}
   m_Name: Mano
   m_EditorClassIdentifier: Assembly-CSharp::DragAndLeaveTool
-  icon: {fileID: -1541723221930795474, guid: f74dae20ebb903744ae6c70ff7b4c774, type: 3}
+  icon: {fileID: 2800000, guid: f74dae20ebb903744ae6c70ff7b4c774, type: 3}
   cursorReplace: 1
