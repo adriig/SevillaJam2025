@@ -22,9 +22,6 @@ public class UIGameManager : MonoBehaviour
     public GameObject skeletonHoldOnZone;
 
     [SerializeField]
-    public GameObject skeletonBoneContainer;
-
-    [SerializeField]
     public GameObject skeletonDraggableBone;
 
     [SerializeField]
@@ -40,8 +37,31 @@ public class UIGameManager : MonoBehaviour
     public GameObject skeletonHoldOnBone3;
 
     [Header("Golem Character Objects")]
-    [SeraializeField]
+    [SerializeField]
     public GameObject golemHoldOnZone;
+    [SerializeField]
+    public GameObject golemBubbleClick1;
+    [SerializeField]
+    public GameObject golemBubbleClick2;
+    [SerializeField]
+    public GameObject golemBubbleClick3;
+    [SerializeField]
+    public GameObject golemHoldOnZone2;
+    [Header("Slime Character Objects")]
+    [SerializeField]
+    public GameObject slimeBubbleClick1;
+    [SerializeField]
+    public GameObject slimeBubbleClick2;
+    [SerializeField]
+    public GameObject slimeBubbleClick3;
+    [SerializeField]
+    public GameObject slimeBubbleCClick4;
+    [SerializeField]
+    public GameObject slimeBubbleClick5;
+    [SerializeField]
+    public GameObject slimeSword;
+    [SerializeField]
+    public GameObject slimeSwordSafeArea;
 
     [HideInInspector]
     public static UIGameManager Instance { get; private set; }
@@ -126,12 +146,11 @@ public class UIGameManager : MonoBehaviour
 
     internal GameObject getGameObject(string key)
     {
+        Debug.Log(key);
         switch (key)
         {
             case "Skeleton_HoldOnZone":
                 return skeletonHoldOnZone;
-            case "Skeleton_Container":
-                return skeletonBoneContainer;
             case "Skeleton_Draggable":
                 return skeletonDraggableBone;
             case "Skeleton_DropArea":
@@ -144,6 +163,28 @@ public class UIGameManager : MonoBehaviour
                 return skeletonHoldOnBone3;
             case "Golem_HoldOnZone":
                 return golemHoldOnZone;
+            case "Golem_1BubbleClick":
+                return golemBubbleClick1;
+            case "Golem_2BubbleClick":
+                return golemBubbleClick2;
+            case "Golem_3BubbleClick":
+                return golemBubbleClick3;
+            case "Golem_2HoldOnZone":
+                return golemHoldOnZone2;
+            case "Slime_1BubbleClick":
+                return slimeBubbleClick1;
+            case "Slime_2BubbleClick":
+                return slimeBubbleClick2;
+            case "Slime_3BubbleClick":
+                return slimeBubbleClick3;
+            case "Slime_4BubbleClick":
+                return slimeBubbleCClick4;
+            case "Slime_5BubbleClick":
+                return slimeBubbleClick5;
+            case "Slime_Draggable":
+                return slimeSword;
+            case "Slime_DropArea":
+                return slimeSwordSafeArea;
             default:
                 Debug.LogWarning("No GameObject found for key: " + key);
                 return null;

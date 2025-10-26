@@ -1,24 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MagicOrbController : MonoBehaviour, IPointerClickHandler
 {
-    [Header("Scale Settings")]
+    [Header("Animation Settings")]
     [SerializeField]
-    private float maxScale = 2f;
+    private float animationTime = 1f; // total time for the full 12-frame animation
 
-    [SerializeField]
-    private float growSpeed = 1f;
+    private float elapsedTime = 0f;
+    private int totalFrames = 12;
+    private int currentFrame = 0;
+    private float frameInterval = 0f;
 
-    [SerializeField]
-    private float shrinkSpeed = 3f;
-
-    private Vector3 initialScale;
-    private Vector3 targetScale;
-    private bool isGrowing = true;
     private bool wasClicked = false;
     private bool initialized = false;
     private MagicClicksTool parentTool;
+
+    [SerializeField]
+    public List<Sprite> orbSprites;
 
     public void SetParentTool(MagicClicksTool tool)
     {
@@ -37,20 +38,22 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        initialScale = transform.localScale;
-        targetScale = initialScale * maxScale;
+        // Setup animation timings
+        animationTime = Mathf.Max(0.01f, animationTime);
+        frameInterval = animationTime / (float)totalFrames;
+        elapsedTime = 0f;
+        currentFrame = 0;
         initialized = true;
 
-        Debug.Log(
-            $"MagicOrbController: Start - Escala inicial: {initialScale}, Target: {targetScale}"
-        );
+        Debug.Log($"MagicOrbController: Start - animationTime: {animationTime}s, frameInterval: {frameInterval}s");
 
-        if (GetComponent<UnityEngine.UI.Image>() == null && GetComponent<Collider2D>() == null)
+        if (GetComponent<Image>() == null && GetComponent<SpriteRenderer>() == null && GetComponent<Collider2D>() == null)
         {
-            Debug.LogWarning(
-                "MagicOrbController: El GameObject necesita un Image (UI) o Collider2D para detectar clicks"
-            );
+            Debug.LogWarning("MagicOrbController: El GameObject necesita un Image (UI) o SpriteRenderer para mostrar sprites, o un Collider2D para detectar clicks");
         }
+
+        // Initialize first frame if available
+        ApplyFrameSprite(currentFrame);
     }
 
     private void Update()
@@ -58,36 +61,27 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
         if (!initialized || wasClicked)
             return;
 
-        if (isGrowing)
-        {
-            // Crecer hacia maxScale
-            transform.localScale = Vector3.Lerp(
-                transform.localScale,
-                targetScale,
-                growSpeed * Time.deltaTime
-            );
+        // Advance animation time
+        elapsedTime += Time.deltaTime;
 
-            // Si alcanzamos el tamaño máximo (con tolerancia), empezar a decrecer
-            if (Vector3.Distance(transform.localScale, targetScale) < 0.01f)
-            {
-                isGrowing = false;
-                Debug.Log("MagicOrbController: Tamaño máximo alcanzado, comenzando a decrecer");
-            }
-        }
-        else
+        // Calculate how many frames to advance (in case of frame drops)
+        if (frameInterval > 0f)
         {
-            // Decrecer rápidamente hacia 0
-            transform.localScale = Vector3.Lerp(
-                transform.localScale,
-                Vector3.zero,
-                shrinkSpeed * Time.deltaTime
-            );
-
-            // Si es muy pequeño, destruir
-            if (transform.localScale.x < 0.05f)
+            int framesToAdvance = Mathf.FloorToInt(elapsedTime / frameInterval);
+            if (framesToAdvance > 0)
             {
-                Debug.Log("MagicOrbController: Orbe demasiado pequeño, autodestruyéndose");
-                Destroy(gameObject);
+                elapsedTime -= framesToAdvance * frameInterval;
+                for (int i = 0; i < framesToAdvance; i++)
+                {
+                    currentFrame++;
+                    if (currentFrame >= totalFrames || currentFrame >= orbSprites.Count)
+                    {
+                        // Animation finished
+                        Destroy(gameObject);
+                        return;
+                    }
+                    ApplyFrameSprite(currentFrame);
+                }
             }
         }
     }
@@ -115,17 +109,35 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
 
     public void Reset()
     {
-        if (initialScale == Vector3.zero)
-        {
-            initialScale = Vector3.one;
-            Debug.Log("MagicOrbController: Reset - initialScale era zero, configurado a (1,1,1)");
-        }
-
-        transform.localScale = initialScale;
-        targetScale = initialScale * maxScale;
-        isGrowing = true;
+        elapsedTime = 0f;
+        currentFrame = 0;
         wasClicked = false;
         initialized = true;
-        Debug.Log($"MagicOrbController: Reseteado - Escala: {initialScale}, Target: {targetScale}");
+        ApplyFrameSprite(currentFrame);
+        Debug.Log($"MagicOrbController: Reseteado - animationTime: {animationTime}s, totalFrames: {totalFrames}");
+    }
+
+    private void ApplyFrameSprite(int frameIndex)
+    {
+        if (orbSprites == null || orbSprites.Count == 0)
+            return;
+
+        int idx = Mathf.Clamp(frameIndex, 0, orbSprites.Count - 1);
+
+        // Try UI Image first
+        var img = GetComponent<Image>();
+        if (img != null)
+        {
+            img.sprite = orbSprites[idx];
+            return;
+        }
+
+        // Try SpriteRenderer
+        var sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.sprite = orbSprites[idx];
+            return;
+        }
     }
 }

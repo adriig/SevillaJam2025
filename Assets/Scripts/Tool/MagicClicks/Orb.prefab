@@ -88,6 +88,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5b03849b9bc0f49accb91d6ed23251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagicOrbController
-  maxScale: 1.5
-  growSpeed: 3
-  shrinkSpeed: 6
+  animationTime: 1
+  orbSprites:
+  - {fileID: -4629049501556285755, guid: b4363a7d073820f40b857a73eed83575, type: 3}
+  - {fileID: 2767827736144089870, guid: 38b8d3d2e7eb378438a6e60b38989de0, type: 3}
+  - {fileID: -9023033428973963139, guid: 58e6bcedeefb5da4a95cc14aaec8066c, type: 3}
+  - {fileID: 4339637740665639043, guid: 54010bd4e6ff45143a810263ca64e867, type: 3}
+  - {fileID: 2330853863024075078, guid: 9ffeb975882f9094ba5997576f0dbd41, type: 3}
+  - {fileID: 1432233389458849346, guid: 91389a52ca30a08429002f04001cb747, type: 3}
+  - {fileID: 5228848324614209576, guid: 80e07aa66444c4b49bdf9cb08f150434, type: 3}
+  - {fileID: -2631629209692430750, guid: 72bca374901b09f43a922df0638fc92a, type: 3}
+  - {fileID: -6157161286011375000, guid: 285243c8fddb8444ba239276b6860e17, type: 3}
+  - {fileID: -6584682753621958473, guid: b61a7e48ae3b9f445afa6116b70dc013, type: 3}
+  - {fileID: 183296198787480810, guid: f00dfa402cc1fb34f9708598adb684b4, type: 3}
+  - {fileID: 8114853430960578276, guid: f74ec50ecaf962149ae56e0ead4510b4, type: 3}

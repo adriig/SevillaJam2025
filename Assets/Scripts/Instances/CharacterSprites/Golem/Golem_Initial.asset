@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6a61d8b49830940a22393e0834eedf, type: 3}
   m_Name: Golem_Initial
   m_EditorClassIdentifier: Assembly-CSharp::OverflowCharacterSprite
-  sprite: {fileID: 21300000, guid: d0104abfd0af24b4cb738ed15bc46ff5, type: 3}
+  sprite: {fileID: 21300000, guid: 8b9ad216dc00ff2499a0142a60f52311, type: 3}
   type: 1
   TransparencyPercentage: 1
