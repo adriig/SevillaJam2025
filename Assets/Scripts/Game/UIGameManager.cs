@@ -69,6 +69,13 @@ public class UIGameManager : MonoBehaviour
     public GameObject slimeSword;
     [SerializeField]
     public GameObject slimeSwordSafeArea;
+    [Header("PixelArt Character Objects")]
+    [SerializeField]
+    public GameObject pixelBubbleClick;
+    [SerializeField]
+    public GameObject pixelArea1;
+    [SerializeField]
+    public GameObject pixelArea2;
 
     [HideInInspector]
     public static UIGameManager Instance { get; private set; }
@@ -192,6 +199,12 @@ public class UIGameManager : MonoBehaviour
                 return slimeSword;
             case "Slime_DropArea":
                 return slimeSwordSafeArea;
+            case "PixelArt_BubbleClick":
+                return pixelBubbleClick;
+            case "PixelArt_1HoldOnZone":
+                return pixelArea1;
+            case "PixelArt_2HoldOnZone":
+                return pixelArea2;
             default:
                 Debug.LogWarning("No GameObject found for key: " + key);
                 return null;

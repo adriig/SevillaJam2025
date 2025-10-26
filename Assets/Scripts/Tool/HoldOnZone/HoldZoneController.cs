@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class HoldZoneController
     : MonoBehaviour,
@@ -11,14 +12,42 @@ public class HoldZoneController
 {
     [SerializeField]
     private float requiredHoldDistance = 2500f;
+    
+    [Header("Blink Effect")]
+    [SerializeField]
+    private float blinkSpeed = 1f; 
+    
     private bool isPointerInside = false;
     private bool isClickHeld = false;
     private bool isCompleted = false;
     private Vector2 lastPointerPosition;
     private float accumulatedDistance = 1f;
+    private Image imageComponent;
+    private float blinkTimer = 0f;
+
+    [SerializeField]
+    private float maximumAlpha = 1f;
+
+    private void Awake()
+    {
+        imageComponent = GetComponent<Image>();
+        if (imageComponent == null)
+        {
+            Debug.LogWarning("HoldZoneController: No se encontró componente Image para efecto de parpadeo.");
+        }
+    }
 
     private void Update()
     {
+        if (imageComponent != null && !isCompleted)
+        {
+            blinkTimer += Time.deltaTime * blinkSpeed;
+            float alpha = Mathf.PingPong(blinkTimer, maximumAlpha);
+            Color color = imageComponent.color;
+            color.a = alpha;
+            imageComponent.color = color;
+        }
+
         if (isClickHeld && !isCompleted)
         {
             if (accumulatedDistance >= requiredHoldDistance)
@@ -69,6 +98,7 @@ public class HoldZoneController
             lastPointerPosition = currentPos;
             float progress = Mathf.Clamp01(accumulatedDistance / requiredHoldDistance) * 100f;
             UIGameManager.Instance.SetOverflowCharacterOpacity(progress);
+            Debug.Log($"HoldZoneController: Progreso de hold: {progress}%");
         }
     }
 
@@ -84,5 +114,13 @@ public class HoldZoneController
         isCompleted = false;
         isClickHeld = false;
         accumulatedDistance = 1f;
+        blinkTimer = 0f;
+        
+        if (imageComponent != null)
+        {
+            Color color = imageComponent.color;
+            color.a = 0f;
+            imageComponent.color = color;
+        }
     }
 }

@@ -8,6 +8,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private Vector3 originalPosition;
     private RectTransform rectTransform;
     private Canvas canvas;
+    [SerializeField]
+    private Sprite withSword;
+    [SerializeField]
+    private Sprite withoutSword;
 
     private void Awake()
     {
@@ -19,6 +23,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnBeginDrag(PointerEventData eventData)
     {
         originalPosition = transform.position;
+        if (withSword != null && withoutSword != null)
+        {
+            UIGameManager.Instance.UpdateCharacterImage(withoutSword);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -62,6 +70,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                         GameManager.Instance.Next();
                         return;
                     }
+                }
+
+                if (withSword != null && withoutSword != null)
+                {
+                    UIGameManager.Instance.UpdateCharacterImage(withSword);
                 }
             }
         }
