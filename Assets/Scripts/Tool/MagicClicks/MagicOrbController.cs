@@ -7,7 +7,7 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
 {
     [Header("Animation Settings")]
     [SerializeField]
-    private float animationTime = 1f; // total time for the full 12-frame animation
+    private float animationTime = 1f;
 
     private float elapsedTime = 0f;
     private int totalFrames = 12;
@@ -28,7 +28,6 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
 
     private void Awake()
     {
-        // Asegurar que el objeto tiene una escala válida inicial
         if (transform.localScale == Vector3.zero || transform.localScale.x < 0.01f)
         {
             transform.localScale = Vector3.one;
@@ -38,7 +37,6 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        // Setup animation timings
         animationTime = Mathf.Max(0.01f, animationTime);
         frameInterval = animationTime / (float)totalFrames;
         elapsedTime = 0f;
@@ -52,7 +50,6 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
             Debug.LogWarning("MagicOrbController: El GameObject necesita un Image (UI) o SpriteRenderer para mostrar sprites, o un Collider2D para detectar clicks");
         }
 
-        // Initialize first frame if available
         ApplyFrameSprite(currentFrame);
     }
 
@@ -61,10 +58,8 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
         if (!initialized || wasClicked)
             return;
 
-        // Advance animation time
         elapsedTime += Time.deltaTime;
 
-        // Calculate how many frames to advance (in case of frame drops)
         if (frameInterval > 0f)
         {
             int framesToAdvance = Mathf.FloorToInt(elapsedTime / frameInterval);
@@ -76,7 +71,6 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
                     currentFrame++;
                     if (currentFrame >= totalFrames || currentFrame >= orbSprites.Count)
                     {
-                        // Animation finished
                         Destroy(gameObject);
                         return;
                     }
@@ -97,13 +91,11 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
         wasClicked = true;
         Debug.Log("¡Orbe clickeado exitosamente! ✓");
 
-        // Notificar al tool padre
         if (parentTool != null)
         {
             parentTool.OnOrbClicked();
         }
 
-        // Destruir inmediatamente al hacer click
         Destroy(gameObject);
     }
 
@@ -124,7 +116,6 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
 
         int idx = Mathf.Clamp(frameIndex, 0, orbSprites.Count - 1);
 
-        // Try UI Image first
         var img = GetComponent<Image>();
         if (img != null)
         {
@@ -132,7 +123,6 @@ public class MagicOrbController : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        // Try SpriteRenderer
         var sr = GetComponent<SpriteRenderer>();
         if (sr != null)
         {

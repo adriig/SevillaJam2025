@@ -14,6 +14,16 @@ public class GameManager : MonoBehaviour
     public Tool activeTool = null;
     public static GameManager Instance { get; private set; }
 
+        [Header("Per-Character Timer")]
+        [SerializeField]
+        private int characterTimeSeconds = 60;
+
+        [SerializeField]
+        private bool autoAdvanceOnTimeout = false;
+
+        private Coroutine characterTimerCoroutine;
+        private int characterTimeRemaining;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -51,9 +61,72 @@ public class GameManager : MonoBehaviour
     public void NextCharacter()
     {
         int currentIndex = characters.IndexOf(activeCharacter);
+        if (currentIndex == characters.Count - 1)
+        {
+            NoMoreCharacters();
+            return;
+        }
         int nextIndex = (currentIndex + 1) % characters.Count;
         activeCharacter = characters[nextIndex];
         HandleActiveCharacter();
+    }
+
+    private void StartCharacterTimer()
+    {
+        if (characterTimerCoroutine != null)
+        {
+            StopCoroutine(characterTimerCoroutine);
+            characterTimerCoroutine = null;
+        }
+
+        characterTimeRemaining = Mathf.Max(0, characterTimeSeconds);
+        characterTimerCoroutine = StartCoroutine(CharacterTimerRoutine());
+    }
+
+    private IEnumerator CharacterTimerRoutine()
+    {
+        int elapsed = 0;
+        
+        if (UIGameManager.Instance != null)
+        {
+            UIGameManager.Instance.UpdateClockSprite(characterTimeRemaining);
+        }
+        
+        while (characterTimeRemaining > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            characterTimeRemaining -= 1;
+            elapsed += 1;
+            Debug.Log($"[GameManager] Character '{activeCharacter?.name}' - seconds elapsed: {elapsed}, remaining: {characterTimeRemaining}s");
+            
+            if (UIGameManager.Instance != null)
+            {
+                UIGameManager.Instance.UpdateClockSprite(characterTimeRemaining);
+            }
+        }
+
+        Debug.Log($"[GameManager] Character '{activeCharacter?.name}' timer finished.");
+
+        characterTimerCoroutine = null;
+
+        if (autoAdvanceOnTimeout)
+        {
+            NextCharacter();
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            Debug.Log("[GameManager] Time reached 0 - Game Over!");
+            
+            if (WinLoseMenu.Instance != null)
+            {
+                WinLoseMenu.Instance.ShowLoseMenu();
+            }
+            else
+            {
+                Debug.LogError("[GameManager] WinLoseMenu.Instance is null - cannot show lose menu.");
+            }
+        }
     }
 
     public void Next()
@@ -85,6 +158,21 @@ public class GameManager : MonoBehaviour
         NextCharacter();
     }
 
+    public void NoMoreCharacters()
+    {
+        Time.timeScale = 0f;
+        Debug.Log("[GameManager] No more characters - You Win!");
+
+        if (WinLoseMenu.Instance != null)
+        {
+            WinLoseMenu.Instance.ShowWinMenu();
+        }
+        else
+        {
+            Debug.LogError("[GameManager] WinLoseMenu.Instance is null - cannot show win menu.");
+        }
+    }
+
     public void StopSpriteChange()
     {
         if (isChangingSprites && spriteChangeCoroutine != null)
@@ -111,9 +199,12 @@ public class GameManager : MonoBehaviour
 
     public void HandleActiveCharacter()
     {
+        StopSpriteChange();
+        
         activeCharacter.InitializeCharacter();
         SetActiveTool(activeCharacter.activeTool.tool);
         UpdateUI();
+        StartCharacterTimer();
     }
 
     public void UpdateUI()
@@ -122,6 +213,5 @@ public class GameManager : MonoBehaviour
         UIGameManager.Instance.UpdateOverflowCharacterImage(
             activeCharacter.activeOverflowCharacterSprite?.sprite
         );
-        // UIGameManager.Instance.RenderTools(activeCharacter.Tools);
     }
 }

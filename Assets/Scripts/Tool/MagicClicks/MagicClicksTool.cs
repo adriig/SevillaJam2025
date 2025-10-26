@@ -25,13 +25,31 @@ public class MagicClicksTool : Tool
     {
         base.InitializeTool(character, key + "MagicClicks");
 
-        // Resetear contador
         clickedOrbs = 0;
 
-        targetCanvas = FindFirstObjectByType<Canvas>();
+        GameObject gameCanvasObj = GameObject.Find("CanvasGame");
+        if (gameCanvasObj != null)
+        {
+            targetCanvas = gameCanvasObj.GetComponent<Canvas>();
+        }
+
         if (targetCanvas == null)
         {
-            Debug.LogError("MagicClicksTool: No se encontró Canvas en la escena.");
+            Debug.LogWarning("MagicClicksTool: No se encontró Canvas 'Game', intentando buscar por FindObjectsOfType...");
+            Canvas[] allCanvases = FindObjectsByType<Canvas>(FindObjectsSortMode.None);
+            foreach (Canvas canvas in allCanvases)
+            {
+                if (canvas.gameObject.name == "Game")
+                {
+                    targetCanvas = canvas;
+                    break;
+                }
+            }
+        }
+
+        if (targetCanvas == null)
+        {
+            Debug.LogError("MagicClicksTool: No se encontró Canvas 'Game' en la escena.");
             return;
         }
 
@@ -43,7 +61,7 @@ public class MagicClicksTool : Tool
             spawner = spawnerObj.AddComponent<MagicOrbSpawner>();
         }
 
-        Debug.Log($"MagicClicksTool: Inicializado correctamente para {character} - Objetivo: {orbsToClick} orbes");
+        Debug.Log($"MagicClicksTool: Inicializado correctamente para {character} en Canvas '{targetCanvas.gameObject.name}' - Objetivo: {orbsToClick} orbes");
     }
 
     public override void DisableAll()
@@ -56,7 +74,6 @@ public class MagicClicksTool : Tool
             Debug.Log("MagicClicksTool: DisableAll - Spawner detenido y orbes limpiados");
         }
 
-        // Resetear contador al deshabilitar
         clickedOrbs = 0;
     }
 
@@ -64,7 +81,6 @@ public class MagicClicksTool : Tool
     {
         base.UseTool();
 
-        // Resetear contador al usar la herramienta
         clickedOrbs = 0;
 
         if (orbPrefab == null)
@@ -95,13 +111,11 @@ public class MagicClicksTool : Tool
         {
             Debug.Log("MagicClicksTool: ¡Objetivo alcanzado! Llamando a GameManager.Next()");
             
-            // Detener el spawner
             if (spawner != null)
             {
                 spawner.StopSpawning();
             }
 
-            // Llamar a GameManager
             GameManager.Instance.Next();
         }
     }
