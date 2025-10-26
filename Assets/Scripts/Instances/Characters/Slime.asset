@@ -41,3 +41,4 @@ MonoBehaviour:
   activeCharacterSprite: {fileID: 11400000, guid: 6b5ddf2b828f9164a853aafd318f29b3, type: 2}
   activeOverflowCharacterSprite: {fileID: 0}
   character: 4
+  musicTheme: {fileID: 8300000, guid: 39c503c311260004d95952fe1cd2b1c1, type: 3}

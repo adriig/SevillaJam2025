@@ -413,12 +413,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331529720}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 971, y: 531, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1641713540}
+  m_Father: {fileID: 1177034219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &338354390
 GameObject:
@@ -794,7 +794,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1641713540}
+  m_Father: {fileID: 1177034219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &878724791
 GameObject:
@@ -923,7 +923,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1641713540}
+  m_Father: {fileID: 1177034219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909417922
 GameObject:
@@ -1207,38 +1207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a323d6901335cb4694b450a3072eb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  musicSource: {fileID: 0}
-  SFXSource: {fileID: 0}
-  backgroundSource: {fileID: 0}
-  background: {fileID: 0}
-  openDoor: {fileID: 0}
-  closeDoor: {fileID: 0}
-  backgroundMusicNaranjita: {fileID: 0}
-  speakingNaranjita: {fileID: 0}
-  leafMoving: {fileID: 0}
-  backgroundMusicSkeleton: {fileID: 0}
-  speakingSkeleton: {fileID: 0}
-  backgroundMusicGolem: {fileID: 0}
-  speakingGolem: {fileID: 0}
-  backgroundMusicGhost: {fileID: 0}
-  speakingGhost: {fileID: 0}
-  backgroundMusicPixelart: {fileID: 0}
-  speakingPixelart: {fileID: 0}
-  backgroundMusicSlime: {fileID: 0}
-  speakingSlime: {fileID: 0}
-  backgroundMusicPyramid: {fileID: 0}
-  speakingPyramid: {fileID: 0}
-  cleaning: {fileID: 0}
-  pickaxe: {fileID: 0}
-  chisel: {fileID: 0}
-  shiner: {fileID: 0}
-  wateringCan: {fileID: 0}
-  coloring: {fileID: 0}
-  seeds: {fileID: 0}
-  scissors: {fileID: 0}
-  gloves: {fileID: 0}
-  glovesHard: {fileID: 0}
-  grimory: {fileID: 0}
+  musicSource: {fileID: 878724792}
+  SFXSource: {fileID: 484852827}
+  backgroundSource: {fileID: 331529721}
 --- !u!4 &1177034219
 Transform:
   m_ObjectHideFlags: 0
@@ -1251,7 +1222,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1570384049}
+  - {fileID: 878724793}
+  - {fileID: 484852828}
+  - {fileID: 331529722}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1570384044
@@ -1364,92 +1339,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1808361588}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1177034219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1641713538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1641713540}
-  - component: {fileID: 1641713539}
-  m_Layer: 0
-  m_Name: Sound Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1641713539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641713538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a323d6901335cb4694b450a3072eb3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  musicSource: {fileID: 878724792}
-  SFXSource: {fileID: 484852827}
-  backgroundSource: {fileID: 331529721}
-  background: {fileID: 0}
-  openDoor: {fileID: 0}
-  closeDoor: {fileID: 0}
-  backgroundMusicNaranjita: {fileID: 0}
-  speakingNaranjita: {fileID: 0}
-  leafMoving: {fileID: 0}
-  backgroundMusicSkeleton: {fileID: 0}
-  speakingSkeleton: {fileID: 0}
-  backgroundMusicGolem: {fileID: 0}
-  speakingGolem: {fileID: 0}
-  backgroundMusicGhost: {fileID: 0}
-  speakingGhost: {fileID: 0}
-  backgroundMusicPixelart: {fileID: 0}
-  speakingPixelart: {fileID: 0}
-  backgroundMusicSlime: {fileID: 0}
-  speakingSlime: {fileID: 0}
-  backgroundMusicPyramid: {fileID: 0}
-  speakingPyramid: {fileID: 0}
-  cleaning: {fileID: 0}
-  pickaxe: {fileID: 0}
-  chisel: {fileID: 0}
-  shiner: {fileID: 0}
-  wateringCan: {fileID: 0}
-  coloring: {fileID: 0}
-  seeds: {fileID: 0}
-  scissors: {fileID: 0}
-  gloves: {fileID: 0}
-  glovesHard: {fileID: 0}
-  grimory: {fileID: 0}
---- !u!4 &1641713540
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641713538}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 878724793}
-  - {fileID: 484852828}
-  - {fileID: 331529722}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672898506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1379,7 @@ RectTransform:
   m_Father: {fileID: 419001784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1542,7 +1438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1808361588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1714,7 +1610,7 @@ RectTransform:
   m_Father: {fileID: 317826391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1762,6 +1658,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 909417925}
   - {fileID: 1177034219}
-  - {fileID: 1641713540}
-  - {fileID: 1570384049}
   - {fileID: 2064628295}

@@ -34,6 +34,9 @@ public class Character : ScriptableObject
     [SerializeField]
     public Characters character;
 
+    [SerializeField]
+    public AudioClip musicTheme;
+
     public void InitializeCharacter()
     {
         activeTool = Tools[0];
@@ -50,6 +53,8 @@ public class Character : ScriptableObject
             activeOverflowCharacterSprite = null;
         }
         activeCharacterSprite = Sprites[currentSpriteIndex];
+
+        SoundManager.Instance.PlayMusic(musicTheme);
     }
 
     public void SpriteChangeHandle()

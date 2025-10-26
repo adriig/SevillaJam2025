@@ -16,6 +16,13 @@ public class UIGameManager : MonoBehaviour
     [SerializeField]
     private HorizontalLayoutGroup toolsRenderer;
 
+    [Header("Clock UI")]
+    [SerializeField]
+    private GameObject clock;
+
+    [SerializeField]
+    private List<Sprite> clockSprites;
+
     [Header("Character GameObjects")]
     [Header("Skeleton Character Objects")]
     [SerializeField]
@@ -188,6 +195,44 @@ public class UIGameManager : MonoBehaviour
             default:
                 Debug.LogWarning("No GameObject found for key: " + key);
                 return null;
+        }
+    }
+
+    public void UpdateClockSprite(int timeRemaining)
+    {
+        if (clock == null || clockSprites == null || clockSprites.Count == 0)
+        {
+            return;
+        }
+
+        // Total time is always 60 seconds, 13 sprites
+        const int totalTime = 60;
+        const int totalSprites = 13;
+        float timePerSprite = (float)totalTime / (float)totalSprites; // 60/13 ≈ 4.615 seconds per sprite
+
+        // Calculate sprite index based on remaining time (inverted so it progresses forward)
+        int spriteIndex = Mathf.FloorToInt((totalTime - timeRemaining) / timePerSprite);
+        spriteIndex = Mathf.Clamp(spriteIndex, 0, totalSprites - 1);
+
+        // Ensure we don't exceed available sprites
+        if (spriteIndex >= clockSprites.Count)
+        {
+            spriteIndex = clockSprites.Count - 1;
+        }
+
+        // Try to update Image component
+        Image clockImage = clock.GetComponent<Image>();
+        if (clockImage != null)
+        {
+            clockImage.sprite = clockSprites[spriteIndex];
+            return;
+        }
+
+        // Try to update SpriteRenderer component
+        SpriteRenderer clockSpriteRenderer = clock.GetComponent<SpriteRenderer>();
+        if (clockSpriteRenderer != null)
+        {
+            clockSpriteRenderer.sprite = clockSprites[spriteIndex];
         }
     }
 }
