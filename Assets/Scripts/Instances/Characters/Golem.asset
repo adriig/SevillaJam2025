@@ -15,19 +15,29 @@ MonoBehaviour:
   Sprites:
   - {fileID: 11400000, guid: 6c50c5ab022520c4ab6737e1485f01be, type: 2}
   - {fileID: 11400000, guid: baae19a9ffa3dbb4491eb699f809fe30, type: 2}
+  - {fileID: 11400000, guid: baae19a9ffa3dbb4491eb699f809fe30, type: 2}
   - {fileID: 11400000, guid: 07de3ae0d67851746b830ca482183553, type: 2}
   - {fileID: 11400000, guid: 01a6de49c05c22842a939542cf4f5534, type: 2}
   - {fileID: 11400000, guid: 3f8796efb322bb94bb8d5e85745b046c, type: 2}
   - {fileID: 11400000, guid: d9bcecbf613050843bdb276416388cf0, type: 2}
+  - {fileID: 11400000, guid: b917da479d93a8a4d840ba04463fdf71, type: 2}
   - {fileID: 11400000, guid: b6384525efecbf54db6f7f1367f334c4, type: 2}
   Tools:
   - tool: {fileID: 11400000, guid: ba07b17da2660784db5950e362dcad4e, type: 2}
     key: 
   - tool: {fileID: 11400000, guid: 2a3c902f9f4299046829939dbc99829d, type: 2}
     key: 
+  - tool: {fileID: 11400000, guid: b8e23e8deaf51944f8d4eb3d681c551c, type: 2}
+    key: 1
+  - tool: {fileID: 11400000, guid: b8e23e8deaf51944f8d4eb3d681c551c, type: 2}
+    key: 2
+  - tool: {fileID: 11400000, guid: b8e23e8deaf51944f8d4eb3d681c551c, type: 2}
+    key: 3
+  - tool: {fileID: 11400000, guid: f1519d76ed89f2148bb7dc3821858439, type: 2}
+    key: 2
   activeTool:
-    tool: {fileID: 11400000, guid: ba07b17da2660784db5950e362dcad4e, type: 2}
-    key: 
-  activeCharacterSprite: {fileID: 11400000, guid: baae19a9ffa3dbb4491eb699f809fe30, type: 2}
-  activeOverflowCharacterSprite: {fileID: 11400000, guid: 6c50c5ab022520c4ab6737e1485f01be, type: 2}
+    tool: {fileID: 11400000, guid: f1519d76ed89f2148bb7dc3821858439, type: 2}
+    key: 2
+  activeCharacterSprite: {fileID: 11400000, guid: b6384525efecbf54db6f7f1367f334c4, type: 2}
+  activeOverflowCharacterSprite: {fileID: 0}
   character: 1

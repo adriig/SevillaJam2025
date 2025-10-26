@@ -7,6 +7,7 @@ public enum Characters
     Golem,
     Ghost,
     PixelArt,
+Slime
 }
 
 [CreateAssetMenu(fileName = "New Character", menuName = "Game/Character")]
